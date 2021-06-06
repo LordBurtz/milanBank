@@ -40,8 +40,16 @@ public class SQL {
             throwables.printStackTrace();
             System.out.println("query gone wrong");
         }
+    }
 
-        public static void updateVal(String table, String row)
+    public static void updateVal (String table, String row, String val) {
+        try {
+            Connection con = DriverManager.getConnection(jdbcUrl);
+            Statement stmnt = con.createStatement();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            System.out.println("query gone wrong");
+        }
     }
 
     //TODO: move all methods in here
