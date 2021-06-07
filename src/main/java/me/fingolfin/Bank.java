@@ -40,6 +40,18 @@ public class Bank {
         System.out.println("Net Worth: " + set.getString("worth"));
     }
 
+    public void getCustomerInfoByID(String id) throws Exception{
+        ResultSet set = SQL.getResults("select * from customers where id=\"" +id+"\"");
+        if (set == null) {
+            System.out.println(id + " not found!");
+            return;
+        }
+        System.out.println("Displaying results for " +id);
+        System.out.println("Full name: " + set.getString("surname") + " " + set.getString("name"));
+        System.out.println("ID: " + set.getString("id"));
+        System.out.println("Net Worth: " + set.getString("worth"));
+    }
+
     public void setDatabankUp() {
         try {
             Connection con = DriverManager.getConnection(jdbcUrl);
@@ -51,5 +63,13 @@ public class Bank {
             throwables.printStackTrace();
             System.out.println("could not setup databse");
         }
+    }
+
+    public void updateCustomer(String id, String row, String value) throws Exception {
+        ResultSet set = SQL.getResults(String.format("select %s from customers where id = \"%s\"", row, id));
+        assert set != null;
+        String val_old = set.getString("id");
+        SQL.updateVal("customer", row, value, "id", id);
+        System.out.printf("changed %s to %s%n", val_old, value);
     }
 }

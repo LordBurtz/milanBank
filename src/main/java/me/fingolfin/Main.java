@@ -61,8 +61,9 @@ public class Main {
 
         Bank bank =Bank.getInstance();
         bank.getCustomers();
-        bank.addCustomer("deml", "milan", "17");
+        bank.getCustomerInfoByID("1");
+        bank.updateCustomer("1", "name", "kargor");
         bank.getCustomers();
-        System.out.println(String.format("update %s set %s = %s", "customers", "name", "test"));
+        bank.getCustomerInfoByID("1");
     }
 }
