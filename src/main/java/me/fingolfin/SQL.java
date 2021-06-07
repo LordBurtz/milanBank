@@ -42,10 +42,13 @@ public class SQL {
         }
     }
 
-    public static void updateVal (String table, String row, String val) {
+    public static void updateVal (String table, String row, String val, String condition_key, String condition_val) {
         try {
             Connection con = DriverManager.getConnection(jdbcUrl);
             Statement stmnt = con.createStatement();
+            String query = String.format("update %s set %s = \"%s\" where %s = \"%s\";", table, row, val,
+                    condition_key, condition_val);
+            stmnt.execute(query);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             System.out.println("query gone wrong");

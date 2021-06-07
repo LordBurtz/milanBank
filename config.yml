@@ -1,0 +1,7 @@
+test: "test"
+databank:
+  name: "databank.db"
+  absolute_path: "databank/databank.db"
+  security: false
+
+author: fingolfin

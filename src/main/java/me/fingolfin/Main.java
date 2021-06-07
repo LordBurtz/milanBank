@@ -1,9 +1,20 @@
 package me.fingolfin;
 
+import org.yaml.snakeyaml.Yaml;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Main {
+    static Map<String, Object> data;
+
     public static void test() {
         String jdbcUrl = "jdbc:sqlite:database/database.db";
         try {
@@ -30,13 +41,28 @@ public class Main {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
 
+    //TODO: add yml config option
+    public static void getConfig() {
+        Yaml yaml = new Yaml();
+        try {
+            InputStream in = new FileInputStream("config.yml");
+            data = yaml.load(in);
+            System.out.println(data.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) throws Exception {
+        //getConfig();
+
+
         Bank bank =Bank.getInstance();
         bank.getCustomers();
         bank.addCustomer("deml", "milan", "17");
         bank.getCustomers();
+        System.out.println(String.format("update %s set %s = %s", "customers", "name", "test"));
     }
 }
