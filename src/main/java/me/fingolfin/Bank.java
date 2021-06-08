@@ -69,7 +69,7 @@ public class Bank {
         ResultSet set = SQL.getResults(String.format("select %s from customers where id = \"%s\"", row, id));
         assert set != null;
         String val_old = set.getString(row);
-        SQL.updateVal("customer", row, value, "id", id);
+        SQL.updateVal("customers", row, value, "id", id);
         System.out.printf("changed %s to %s%n", val_old, value);
     }
 }
