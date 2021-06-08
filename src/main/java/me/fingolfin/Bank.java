@@ -68,8 +68,8 @@ public class Bank {
     public void updateCustomer(String id, String row, String value) throws Exception {
         ResultSet set = SQL.getResults(String.format("select %s from customers where id = \"%s\"", row, id));
         assert set != null;
-        String val_old = set.getString("id");
-        SQL.updateVal("customer", row, value, "id", id);
+        String val_old = set.getString(row);
+        SQL.updateVal("customers", row, value, "id", id);
         System.out.printf("changed %s to %s%n", val_old, value);
     }
 }
