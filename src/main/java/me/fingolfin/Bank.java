@@ -29,7 +29,7 @@ public class Bank {
     }
 
     public void getCustomerInfoByName(String name) throws Exception{
-        ResultSet set = SQL.getResults("select * from customers where name=\"" +name+"\"");
+        ResultSet set = SQL.getResults("select * from customers where name=\"" +name+"\";");
         if (set == null) {
             System.out.println(name + " not found!");
             return;
@@ -41,7 +41,7 @@ public class Bank {
     }
 
     public void getCustomerInfoByID(String id) throws Exception{
-        ResultSet set = SQL.getResults("select * from customers where id=\"" +id+"\"");
+        ResultSet set = SQL.getResults("select * from customers where id=\"" +id+"\";");
         if (set == null) {
             System.out.println(id + " not found!");
             return;
@@ -66,7 +66,8 @@ public class Bank {
     }
 
     public void updateCustomer(String id, String row, String value) throws Exception {
-        ResultSet set = SQL.getResults(String.format("select %s from customers where id = \"%s\"", row, id));
+        ResultSet set = SQL.getResults(String.format("select %s from customers where id = \"%s\";", row, id));
+        System.out.println(String.format("select %s from customers where id = \"%s\";", row, id));
         assert set != null;
         String val_old = set.getString(row);
         SQL.updateVal("customers", row, value, "id", id);

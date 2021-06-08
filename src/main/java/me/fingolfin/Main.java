@@ -57,12 +57,10 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         //getConfig();
-
-
         Bank bank =Bank.getInstance();
         bank.getCustomers();
         bank.getCustomerInfoByID("1");
-        bank.updateCustomer("1", "name", "kargor");
+        bank.updateCustomer("1", "name", "karger");
         bank.getCustomers();
         bank.getCustomerInfoByID("1");
     }
