@@ -46,7 +46,7 @@ public class Bank {
             System.out.println(id + " not found!");
             return;
         }
-        System.out.println("Displaying results for " +id);
+        System.out.println("Displaying results for ID: " +id);
         System.out.println("Full name: " + set.getString("surname") + " " + set.getString("name"));
         System.out.println("ID: " + set.getString("id"));
         System.out.println("Net Worth: " + set.getString("worth"));
@@ -61,7 +61,7 @@ public class Bank {
             System.out.println("database up and running");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            System.out.println("could not setup databse");
+            System.out.println("could not setup database");
         }
     }
 
