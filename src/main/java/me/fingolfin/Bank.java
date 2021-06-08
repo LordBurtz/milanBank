@@ -46,7 +46,7 @@ public class Bank {
             System.out.println(id + " not found!");
             return;
         }
-        System.out.println("Displaying results for " +id);
+        System.out.println("Displaying results for ID: " +id);
         System.out.println("Full name: " + set.getString("surname") + " " + set.getString("name"));
         System.out.println("ID: " + set.getString("id"));
         System.out.println("Net Worth: " + set.getString("worth"));
@@ -61,15 +61,15 @@ public class Bank {
             System.out.println("database up and running");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            System.out.println("could not setup databse");
+            System.out.println("could not setup database");
         }
     }
 
     public void updateCustomer(String id, String row, String value) throws Exception {
         ResultSet set = SQL.getResults(String.format("select %s from customers where id = \"%s\"", row, id));
         assert set != null;
-        String val_old = set.getString("id");
-        SQL.updateVal("customer", row, value, "id", id);
+        String val_old = set.getString(row);
+        SQL.updateVal("customers", row, value, "id", id);
         System.out.printf("changed %s to %s%n", val_old, value);
     }
 }

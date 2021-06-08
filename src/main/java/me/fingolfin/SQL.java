@@ -48,6 +48,7 @@ public class SQL {
             Statement stmnt = con.createStatement();
             String query = String.format("update %s set %s = \"%s\" where %s = \"%s\";", table, row, val,
                     condition_key, condition_val);
+            System.out.println(query);
             stmnt.execute(query);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
