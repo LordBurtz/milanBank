@@ -95,8 +95,8 @@ public class Bank {
         updateCustomer(recieverID, "worth", String.valueOf(new_amount));
         
         System.out.println("receiver updated");
-            //TODO: add LangException and SQLException
-        } catch (SQLException | LangException ex) {
+            //TODO: add accurate Exception for parsing String to Integer and SQLException
+        } catch (SQLException | Exception ex) {
             ex.printStackTrace();
         }
     }
