@@ -5,7 +5,10 @@ import java.sql.*;
 public class Bank {
     private static Bank bank = new Bank();
     private Data data;
-    private Bank() {        data = new Data();}
+    private Bank() {
+        data = new Data();
+
+    }
 
     public static Bank getInstance() {
         return bank;

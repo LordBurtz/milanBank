@@ -1,5 +1,6 @@
 package me.fingolfin;
 
+import java.io.File;
 import java.sql.*;
 
 public class Data implements AutoCloseable {
@@ -9,9 +10,14 @@ public class Data implements AutoCloseable {
     private Statement stmnt;
 
     public Data() {
+        boolean flick;
+        File f = new File("database/database.db");
+        flick = f.exists();
+
         try {
             con = DriverManager.getConnection(jdbcUrl);
             stmnt = con.createStatement();
+            if (!flick) setUp();
         } catch (SQLException ex) {
           ex.printStackTrace();
         }finally {
@@ -24,7 +30,18 @@ public class Data implements AutoCloseable {
               }
         }}
     }
-  
+
+    public void setUp() {
+        String create_customers = "create table if not exists customers(id integer PRIMARY KEY, name text, "
+                + "surname text, worth real, PLZ text, addr text, created_at text);";
+        try {
+            stmnt.execute(create_customers);
+            System.out.println("new database up and running");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
   public ResultSet getResults(String query) {
         try {
             return stmnt.executeQuery(query);

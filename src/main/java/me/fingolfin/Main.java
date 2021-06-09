@@ -57,6 +57,6 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         //getConfig();
-        Bank bank =Bank.getInstance();
+        //Bank bank =Bank.getInstance();
     }
 }
