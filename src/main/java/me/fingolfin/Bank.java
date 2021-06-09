@@ -6,14 +6,16 @@ import static me.fingolfin.SQL.jdbcUrl;
 
 public class Bank {
     private static Bank bank = new Bank();
+    private Data data;
     private Bank() {}
 
     public static Bank getInstance() {
+        data = new Data();
         return bank;
     }
 
     public void getCustomers() throws Exception{ //added bc its whining about the "unhandled exception i handled somehwere else bruh
-        ResultSet set = SQL.getResults("select name, surname, id from customers;");
+        ResultSet set = data.getResults("select name, surname, id from customers;");
         if (set == null) return;
         while (set.next()) {
             String name =set.getString("name");
