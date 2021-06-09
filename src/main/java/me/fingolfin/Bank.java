@@ -2,8 +2,6 @@ package me.fingolfin;
 
 import java.sql.*;
 
-import static me.fingolfin.SQL.jdbcUrl;
-
 public class Bank {
     private static Bank bank = new Bank();
     private Data data;
@@ -23,13 +21,13 @@ public class Bank {
         }
     }
 
-    public void addCustomer(String name, String surname, String worth) throws Exception {
-        String[] rows = {"name", "surname", "worth"};
-        String[] values = {name, surname, worth};
+    public void addCustomer(String name, String surname, String worth, String plz, String addr) {
+        String[] rows = {"name", "surname", "worth", "PLZ", "addr", "created_at"};
+        String[] values = {name, surname, worth, plz, addr};
         data.insert("customers", rows, values);
     }
 
-    public void getCustomerInfoByName(String name) throws Exception{
+    public void getCustomerInfoByName(String name) throws SQLException{
         ResultSet set = data.getResults("select * from customers where name=\"" +name+"\";");
         if (set == null) {
             System.out.println(name + " not found!");
@@ -39,6 +37,9 @@ public class Bank {
         System.out.println("Full name: " + set.getString("surname") + " " + set.getString("name"));
         System.out.println("ID: " + set.getString("id"));
         System.out.println("Net Worth: " + set.getString("worth"));
+        System.out.println("PLZ: " + set.getString("PLZ"));
+        System.out.println("Address: " + set.getString("addr"));
+        System.out.println("Account Created at: " + set.getString("created_at"));
     }
 
     public void getCustomerInfoByID(String id) throws Exception{
@@ -51,24 +52,20 @@ public class Bank {
         System.out.println("Full name: " + set.getString("surname") + " " + set.getString("name"));
         System.out.println("ID: " + set.getString("id"));
         System.out.println("Net Worth: " + set.getString("worth"));
+        System.out.println("PLZ: " + set.getString("PLZ"));
+        System.out.println("Address: " + set.getString("addr"));
+        System.out.println("Account Created at: " + set.getString("created_at"));
     }
 
     public void setDatabankUp() {
-        try {
-            Connection con = DriverManager.getConnection(jdbcUrl);
-            Statement stmnt = con.createStatement();
             String create_customers = "create table if not exists customers(id integer PRIMARY KEY, name text, "
                     + "surname text, worth real, PLZ text, addr text, created_at text);";
             System.out.println("database up and running");
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            System.out.println("could not setup database");
-        }
+            data.run(create_customers);
     }
 
-    public void updateCustomer(String id, String row, String value) throws Exception {
+    public void updateCustomer(String id, String row, String value) throws SQLException {
         ResultSet set = data.getResults(String.format("select %s from customers where id = \"%s\";", row, id));
-        System.out.println(String.format("select %s from customers where id = \"%s\";", row, id));
         assert set != null;
         String val_old = set.getString(row);
         data.updateVal("customers", row, value, "id", id);

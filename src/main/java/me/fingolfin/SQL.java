@@ -2,12 +2,14 @@ package me.fingolfin;
 
 import java.sql.*;
 
+@Deprecated
 public class SQL implements AutoCloseable{
     public static String jdbcUrl = "jdbc:sqlite:database/database.db";
 
     private Connection con;
     private Statement stmnt;
 
+    @Deprecated
     public SQL() throws SQLException {
         try {
             con = DriverManager.getConnection(jdbcUrl);

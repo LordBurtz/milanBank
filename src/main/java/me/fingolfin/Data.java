@@ -19,7 +19,7 @@ public class Data implements AutoCloseable {
               try{
                 con.close();
                 System.out.println("unsuccessfull initiating databank");
-            } catch (SQLException ex) {
+            } catch (SQLException | NullPointerException ex) {
                 ex.printStackTrace();
               }
         }}
@@ -27,36 +27,43 @@ public class Data implements AutoCloseable {
   
   public ResultSet getResults(String query) {
         try {
-            ResultSet set = stmnt.executeQuery(query);
-            return set;
+            return stmnt.executeQuery(query);
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
             System.out.println("query gone wrong");
             return null;
         }
     }
-  
+
+    public void run(String query) {
+        try {
+            stmnt.execute(query);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
    public void insert(String table, String[] rows, String[] values) {
         try {
-            String query = "insert into " + table + " (";
+            StringBuilder query = new StringBuilder("insert into " + table + " (");
             for (String s : rows) {
-                 query = query + "\""+  s +"\",";
+                 query.append("\"").append(s).append("\",");
             }
-            query = query.substring(0, query.length() -1);
-            query = query + ") values (";
+            query = new StringBuilder(query.substring(0, query.length() - 1));
+            query.append(") values (");
             for (String s : values) {
-                query = query + "\""+  s +"\",";
+                query.append("\"").append(s).append("\",");
             }
-            query = query.substring(0, query.length() -1);
-            query = query + ");";
+            query = new StringBuilder(query.substring(0, query.length() - 1));
+            query.append(");");
 
-            stmnt.execute(query);
+            stmnt.execute(query.toString());
 
 
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
             System.out.println("query gone wrong");
         }
     }
@@ -69,8 +76,8 @@ public class Data implements AutoCloseable {
             stmnt.execute(query);
 
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
             System.out.println("query gone wrong");
         }
     }
