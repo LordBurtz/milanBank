@@ -58,10 +58,10 @@ public class Main {
     public static void main(String[] args) throws Exception {
         //getConfig();
         Bank bank =Bank.getInstance();
-        bank.getCustomers();
         bank.getCustomerInfoByID("1");
-        bank.updateCustomer("1", "name", "karger");
-        bank.getCustomers();
+        bank.getCustomerInfoByID("2");
+        bank.transfer("1", "2", 420);
         bank.getCustomerInfoByID("1");
+        bank.getCustomerInfoByID("2");
     }
 }
