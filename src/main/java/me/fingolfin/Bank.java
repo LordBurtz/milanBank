@@ -96,7 +96,7 @@ public class Bank {
         
         System.out.println("receiver updated");
             //TODO: add accurate Exception for parsing String to Integer and SQLException
-        } catch (SQLException | Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
