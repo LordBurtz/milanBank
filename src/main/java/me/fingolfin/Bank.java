@@ -81,6 +81,7 @@ public class Bank {
             System.out.println("negative ammounts not supported");
             return;
         }
+        try {
         ResultSet set = data.getResults("select worth from customers where id  = \"" + senderID + "\"");
         int amount_old = set.getInt("worth");
         int new_amount = amount_old - amount;
@@ -94,5 +95,8 @@ public class Bank {
         updateCustomer(recieverID, "worth", String.valueOf(new_amount));
         
         System.out.println("receiver updated");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }
