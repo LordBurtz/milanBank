@@ -37,7 +37,7 @@ public class Data implements AutoCloseable {
         }
     }
   
-   public static void insert(String table, String[] rows, String[] values) {
+   public void insert(String table, String[] rows, String[] values) {
         try {
             String query = "insert into " + table + " (";
             for (String s : rows) {
@@ -61,7 +61,7 @@ public class Data implements AutoCloseable {
         }
     }
   
-   public static void updateVal (String table, String row, String val, String condition_key, String condition_val) {
+   public void updateVal (String table, String row, String val, String condition_key, String condition_val) {
         try {
             String query = String.format("update %s set %s = \"%s\" where %s = \"%s\";", table, row, val,
                     condition_key, condition_val);
