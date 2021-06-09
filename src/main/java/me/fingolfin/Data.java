@@ -2,7 +2,7 @@ package me.fingolfin;
 
 import java.sql.*;
 
-public class Data implements AutoClosable {
+public class Data implements AutoCloseable {
   public static String jdbcUrl = "jdbc:sqlite:database/database.db";
 
     private Connection con;
