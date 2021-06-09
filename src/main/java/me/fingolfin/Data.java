@@ -8,11 +8,13 @@ public class Data implements AutoCloseable {
     private Connection con;
     private Statement stmnt;
 
-    public Data() throws SQLException {
+    public Data() {
         try {
             con = DriverManager.getConnection(jdbcUrl);
             stmnt = con.createStatement();
-        } finally {
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }finally {
             if (stmnt == null) {
                 con.close();
                 System.out.println("unsuccessfull initiating databank");
