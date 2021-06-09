@@ -26,11 +26,11 @@ public class Bank {
     public void addCustomer(String name, String surname, String worth) throws Exception {
         String[] rows = {"name", "surname", "worth"};
         String[] values = {name, surname, worth};
-        SQL.insert("customers", rows, values);
+        data.insert("customers", rows, values);
     }
 
     public void getCustomerInfoByName(String name) throws Exception{
-        ResultSet set = SQL.getResults("select * from customers where name=\"" +name+"\";");
+        ResultSet set = data.getResults("select * from customers where name=\"" +name+"\";");
         if (set == null) {
             System.out.println(name + " not found!");
             return;
@@ -42,7 +42,7 @@ public class Bank {
     }
 
     public void getCustomerInfoByID(String id) throws Exception{
-        ResultSet set = SQL.getResults("select * from customers where id=\"" +id+"\";");
+        ResultSet set = data.getResults("select * from customers where id=\"" +id+"\";");
         if (set == null) {
             System.out.println(id + " not found!");
             return;
@@ -67,11 +67,11 @@ public class Bank {
     }
 
     public void updateCustomer(String id, String row, String value) throws Exception {
-        ResultSet set = SQL.getResults(String.format("select %s from customers where id = \"%s\";", row, id));
+        ResultSet set = data.getResults(String.format("select %s from customers where id = \"%s\";", row, id));
         System.out.println(String.format("select %s from customers where id = \"%s\";", row, id));
         assert set != null;
         String val_old = set.getString(row);
-        SQL.updateVal("customers", row, value, "id", id);
+        data.updateVal("customers", row, value, "id", id);
         System.out.printf("changed %s to %s%n", val_old, value);
     }
 }
