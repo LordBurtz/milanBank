@@ -1,5 +1,6 @@
 package me.fingolfin;
 
+import me.fingolfin.app.Gui;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
@@ -58,5 +59,6 @@ public class Main {
     public static void main(String[] args) throws Exception {
         //getConfig();
         //Bank bank =Bank.getInstance();
+        new Gui();
     }
 }
