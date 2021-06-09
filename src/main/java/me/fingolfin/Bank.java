@@ -94,4 +94,5 @@ public class Bank {
         updateCustomer(senderID, worth, new_amount);
         
         System.out.println("receiver updated");
+    }
 }
