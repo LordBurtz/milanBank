@@ -57,8 +57,8 @@ public class Bank {
         try {
             Connection con = DriverManager.getConnection(jdbcUrl);
             Statement stmnt = con.createStatement();
-            String create_customers = "create table if not exists customers(id integer PRIMARY KEY, name varchar(20), "
-                    + "surname varchar(30), worth integer, PLZ varchar(10), addr text, created_at varchar(22));";
+            String create_customers = "create table if not exists customers(id integer PRIMARY KEY, name text, "
+                    + "surname text, worth real, PLZ text, addr text, created_at text);";
             System.out.println("database up and running");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
