@@ -7,10 +7,9 @@ import static me.fingolfin.SQL.jdbcUrl;
 public class Bank {
     private static Bank bank = new Bank();
     private Data data;
-    private Bank() {}
+    private Bank() {        data = new Data();}
 
     public static Bank getInstance() {
-        data = new Data();
         return bank;
     }
 
