@@ -84,14 +84,14 @@ public class Bank {
         ResultSet set = data.getResults("select worth from customers where id  = \"" + senderID + "\"");
         int amount_old = set.getInt("worth");
         int new_amount = amount_old - amount;
-        updateCustomer(senderID, "worth", new_amount);
+        updateCustomer(senderID, "worth", new_amount.toString());
         
         System.out.println("sender updated");
         
         set = data.getResults("select worth from customers where id  = \"" + recieverID + "\"");
         amount_old = set.getInt("worth");
         new_amount = amount_old + amount;
-        updateCustomer(recieverID, "worth", new_amount);
+        updateCustomer(recieverID, "worth", new_amount.toString());
         
         System.out.println("receiver updated");
     }
