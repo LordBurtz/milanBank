@@ -96,7 +96,7 @@ public class Bank {
         
         System.out.println("receiver updated");
             //TODO: add LangException and SQLException
-        } catch (Exception ex) {
+        } catch (SQLException | LangException ex) {
             ex.printStackTrace();
         }
     }
