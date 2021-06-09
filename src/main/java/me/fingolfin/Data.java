@@ -16,10 +16,13 @@ public class Data implements AutoCloseable {
           ex.printStackTrace();
         }finally {
             if (stmnt == null) {
+              try{
                 con.close();
                 System.out.println("unsuccessfull initiating databank");
-            }
-        }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+              }
+        }}
     }
   
   public ResultSet getResults(String query) {
