@@ -54,11 +54,12 @@ public class SQL implements AutoCloseable{
         try (SQL sql = new SQL()) {
             sql.getResults3(query);
 
-        } catch (SQLException  throwables) {
+        } catch (Exception  throwables) {
             throwables.printStackTrace();
             System.out.println("query gone wrong");
             return null;
         }
+        return null;
     }
 
     public static void insert(String table, String[] rows, String[] values) {
