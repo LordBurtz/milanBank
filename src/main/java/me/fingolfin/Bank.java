@@ -74,4 +74,24 @@ public class Bank {
         data.updateVal("customers", row, value, "id", id);
         System.out.printf("changed %s to %s%n", val_old, value);
     }
+    
+    //TODO: working on worth
+    public void transfer(String senderID, String recieverID, double amount) {
+        if (amount < 0) {
+            System.out.println("negative ammounts not supported");
+            return;
+        }
+        ResultSet set = data.getResults("select worth from customers where id  = \"" + senderID + "\"");
+        int amount_old = set.getInt("worth");
+        int new_amount = amount_old - amount;
+        updateCustomer(senderID, worth, new_amount);
+        
+        System.out.println("sender updated");
+        
+        ResultSet set = data.getResults("select worth from customers where id  = \"" + recieverID + "\"");
+        int amount_old = set.getInt("worth");
+        int new_amount = amount_old + amount;
+        updateCustomer(senderID, worth, new_amount);
+        
+        System.out.println("receiver updated");
 }
