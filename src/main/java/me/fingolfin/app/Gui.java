@@ -5,6 +5,16 @@ import java.awt.*;
 
 public class Gui {
     public Gui() {
+
+    }
+
+    public void gui2() {
+        JFrame frame = new JFrame("Bank Application");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(420, 420);
+    }
+
+    public void gui1() {
         JFrame frame = new JFrame("Bank Application");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420, 420);
@@ -25,9 +35,7 @@ public class Gui {
         frame.getContentPane().add(BorderLayout.NORTH, m1);
     }
 
-    public static void main(String[] args) {
-        //new Gui();
-        //Creating the Frame
+    public void defaultgui() {
         JFrame frame = new JFrame("Chat Frame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
@@ -62,5 +70,11 @@ public class Gui {
         frame.getContentPane().add(BorderLayout.NORTH, mb);
         frame.getContentPane().add(BorderLayout.CENTER, ta);
         frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        //new Gui();
+        //Creating the Frame
+        new Gui().gui2();
     }
 }
