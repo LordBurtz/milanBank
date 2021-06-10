@@ -11,13 +11,11 @@ public class Data implements AutoCloseable {
 
     public Data() {
         boolean flick;
-        File f = new File("database/database.db");
-        flick = f.exists();
-
+        if (!(new File("database").exists())) new File("database").mkdir();
         try {
             con = DriverManager.getConnection(jdbcUrl);
             stmnt = con.createStatement();
-            if (!flick) setUp();
+            setUp();
         } catch (SQLException ex) {
           ex.printStackTrace();
         }finally {

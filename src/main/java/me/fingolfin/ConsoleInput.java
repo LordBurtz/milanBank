@@ -10,11 +10,7 @@ public class ConsoleInput {
 
     public ConsoleInput(Bank bank) {
         this.bank = bank;
-
         Scanner scan = new Scanner(System.in);
-        System.out.println("Username: ");
-        String us = scan.next();
-        System.out.println("usr: " + us);
 
         while (!quit) {
             System.out.println("\n-------------------------------------\n");
@@ -97,7 +93,10 @@ public class ConsoleInput {
                     break;
 
                 case "7":
-                    System.console().flush();
+
+                case "q":
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
                     System.out.println(" quitting..");
                     System.exit(0);
                     quit = true;
@@ -115,7 +114,6 @@ public class ConsoleInput {
                             "|________________________________________________________________|");
                     prn(" repo: https://github.com/LordBurtz/milanBank");
                     break;
-
 
                 default:
                     System.out.println("\u001B[31m !! not a supported option !! \u001B[0m");

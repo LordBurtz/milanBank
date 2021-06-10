@@ -1,13 +1,15 @@
 package me.fingolfin;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class Bank {
     private static Bank bank = new Bank();
     private Data data;
+    private static final SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     private Bank() {
         data = new Data();
-
     }
 
     public static Bank getInstance() {
@@ -18,15 +20,19 @@ public class Bank {
         ResultSet set = data.getResults("select name, surname, id from customers;");
         if (set == null) return;
         while (set.next()) {
+            String id = set.getString("id");
             String name =set.getString("name");
             String surname = set.getString("surname");
-            System.out.println(name + " | " + surname);
+            System.out.println(id +  " | " + name + " | " + surname);
         }
     }
 
     public void addCustomer(String name, String surname, String worth, String plz, String addr) {
         String[] rows = {"name", "surname", "worth", "PLZ", "addr", "created_at"};
-        String[] values = {name, surname, worth, plz, addr};
+
+        Timestamp stamp = new Timestamp(System.currentTimeMillis());
+
+        String[] values = {name, surname, worth, plz, addr, sdf3.format(stamp)};
         data.insert("customers", rows, values);
     }
 
