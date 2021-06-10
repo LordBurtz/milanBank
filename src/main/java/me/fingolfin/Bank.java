@@ -66,6 +66,7 @@ public class Bank {
         System.out.println("Account Created at: " + set.getString("created_at"));
     }
 
+    @Deprecated //moved to Data.java
     public void setDatabankUp() {
             String create_customers = "create table if not exists customers(id integer PRIMARY KEY, name text, "
                     + "surname text, worth real, PLZ text, addr text, created_at text);";
@@ -104,6 +105,27 @@ public class Bank {
             //TODO: add accurate Exception for parsing String to Integer and SQLException
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    public void getSpecificValueByID(String val, String id) {
+        System.out.println(" the usable formats are name, surname, amount in bank, plz, addr and date created");
+        String query = String.format("select %s from customers where id=\"%s\"", val, id);
+        ResultSet set = data.getResults(query);
+        try {
+            System.out.printf(" Value for %s of customer with ID %s = %s%n", val, id, set.getString(val));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void getIDbyName(String name) {
+        String query = String.format("select id from customers where name=\"%s\"", name);
+        ResultSet set = data.getResults(query);
+        try {
+            System.out.printf(" the id for %s is %s", name, set.getString("id"));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 }

@@ -34,7 +34,7 @@ public class Data implements AutoCloseable {
                 + "surname text, worth real, PLZ text, addr text, created_at text);";
         try {
             stmnt.execute(create_customers);
-            System.out.println("new database up and running");
+            System.out.println("database up and running");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

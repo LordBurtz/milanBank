@@ -59,6 +59,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         //getConfig();
         Bank bank =Bank.getInstance();
-        new ConsoleInput(bank);
+        bank.addCustomer("karger", "fridolin", "420" , "84405", "strasse 1");
+        bank.getIDbyName("fritzl");
+        //new ConsoleInput(bank);
     }
 }

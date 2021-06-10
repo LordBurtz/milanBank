@@ -36,8 +36,16 @@ public class ConsoleInput {
                     String name = scan.next();
                     prn(" surname: ");
                     String surname = scan.next();
-                    prn(" initial starting amount");
+                    prn(" starting balance: ");
                     String worth = scan.next();
+
+                    try {
+                        Double.parseDouble(worth);
+                    } catch (NumberFormatException ex){
+                        prn("\u001B[31m this is not a correct number!\n aborting... \u001B[0m");
+                        break;
+                    }
+
                     prn(" PLZ: ");
                     String plz = scan.next();
                     prn(" Address: ");
