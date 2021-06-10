@@ -14,7 +14,7 @@ public class Bank {
         return bank;
     }
 
-    public void getCustomers() throws Exception{ //added bc its whining about the "unhandled exception i handled somehwere else bruh
+    public void getCustomers() throws SQLException{ //added bc its whining about the "unhandled exception i handled somehwere else bruh
         ResultSet set = data.getResults("select name, surname, id from customers;");
         if (set == null) return;
         while (set.next()) {
@@ -45,7 +45,7 @@ public class Bank {
         System.out.println("Account Created at: " + set.getString("created_at"));
     }
 
-    public void getCustomerInfoByID(String id) throws Exception{
+    public void getCustomerInfoByID(String id) throws SQLException{
         ResultSet set = data.getResults("select * from customers where id=\"" +id+"\";");
         if (set == null) {
             System.out.println(id + " not found!");
@@ -76,15 +76,15 @@ public class Bank {
     }
     
     //TODO: working on worth, should change amount to double later
-    public void transfer(String senderID, String recieverID, int amount) {
+    public void transfer(String senderID, String recieverID, double amount) {
         if (amount < 0) {
             System.out.println("negative ammounts not supported");
             return;
         }
         try {
         ResultSet set = data.getResults("select worth from customers where id  = \"" + senderID + "\"");
-        int amount_old = set.getInt("worth");
-        int new_amount = amount_old - amount;
+        double amount_old = set.getDouble("worth");
+        double new_amount = amount_old - amount;
         updateCustomer(senderID, "worth", String.valueOf(new_amount));
         
         System.out.println("sender updated");

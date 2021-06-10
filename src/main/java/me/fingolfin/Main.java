@@ -58,7 +58,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         //getConfig();
-        //Bank bank =Bank.getInstance();
-        new Gui();
+        Bank bank =Bank.getInstance();
+        new ConsoleInput(bank);
     }
 }
