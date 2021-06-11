@@ -10,13 +10,6 @@ public class BankServer {
 
     private Server server;
 
-    protected String useless = "sldkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk" +
-            "sddddddddddddddddddddddddddddddddddddddddddd" +
-            "sdddddddddddddddddddddddddggggggggggggggggggsssss" +
-            "sddddddddddddddddddddddddddddddddddddddddddddddd" +
-            "sdddddddddddddaaaaaaaaaaaaaaaaaaaaaaavbvvvvvvvvvvvvvvvv" +
-            "saddddddddddddddddddddddddddddddddddddddddddddddddddd";
-
     public BankServer() {
         Server server = new Server();
         server.start();
