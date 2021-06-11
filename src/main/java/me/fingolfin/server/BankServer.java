@@ -26,8 +26,14 @@ public class BankServer {
             exception.printStackTrace();
         }
 
+        server.addListener(new ServerListener());
+
         kryo = server.getKryo();
         kryo.register(PingRequest.class);
         kryo.register(PingResponse.class);
+    }
+
+    public static void main(String[] args) {
+        new BankServer();
     }
 }
