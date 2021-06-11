@@ -1,8 +1,10 @@
 if [ ! -x /usr/bin/sqlite3 ] ; then
   echo "please install sqlite3 to continue"
+  exit 0
 fi
 if [ ! -x /usr/bin/maven ] ; then
   echo "please install maven to continue"
+  exit 0
 fi
 mkdir database
 cd database || exit
