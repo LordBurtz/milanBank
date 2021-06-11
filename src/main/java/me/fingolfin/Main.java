@@ -60,7 +60,7 @@ public class Main {
         //getConfig();
         Bank bank =Bank.getInstance();
         bank.addCustomer("karger", "fridolin", "420" , "84405", "strasse 1");
-        bank.getIDbyName("fritzl");}
+        bank.getIDbyName("fritzl");
         //new ConsoleInput(bank);
     }
 }
