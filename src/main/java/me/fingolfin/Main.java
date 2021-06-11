@@ -65,7 +65,7 @@ public class Main {
         catch (SQLException ex) {
             ex.printStackTrace();
             ex.getErrorCode();
-            ex.getMessage( )
+            ex.getMessage( );
             }
         //new ConsoleInput(bank);
     }
