@@ -62,7 +62,7 @@ public class Main {
         bank.addCustomer("karger", "fridolin", "420" , "84405", "strasse 1");
         try {
         bank.getIDbyName("fritzl");}
-        catch (SQLException ex) {
+        catch (Exception ex) {
             ex.printStackTrace();
             ex.getErrorCode();
             ex.getMessage( );
