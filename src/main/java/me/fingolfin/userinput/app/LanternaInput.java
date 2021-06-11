@@ -1,4 +1,4 @@
-package me.fingolfin;
+package me.fingolfin.userinput.app;
 
 
 import java.io.IOException;

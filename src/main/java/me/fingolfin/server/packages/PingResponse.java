@@ -20,7 +20,7 @@ public class PingResponse {
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     whatismyip.openStream()));
 
-            ip = in.readLine(); //you get the IP as a String
+            ip = in.readLine();
 
         } catch (IOException e) {
             e.printStackTrace();

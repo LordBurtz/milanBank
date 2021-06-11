@@ -1,4 +1,4 @@
-package me.fingolfin.app;
+package me.fingolfin.userinput.app;
 
 import javax.swing.*;
 import java.awt.*;

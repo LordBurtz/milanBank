@@ -1,4 +1,4 @@
-package me.fingolfin;
+package me.fingolfin.backend;
 
 import java.io.File;
 import java.sql.*;

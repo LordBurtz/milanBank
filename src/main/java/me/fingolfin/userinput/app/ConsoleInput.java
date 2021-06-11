@@ -1,4 +1,6 @@
-package me.fingolfin;
+package me.fingolfin.userinput.app;
+
+import me.fingolfin.backend.Bank;
 
 import java.sql.SQLException;
 import java.util.Scanner;
