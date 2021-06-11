@@ -41,6 +41,10 @@
       <name>SQLite3</name>
       <url>https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc</url>
     </repository>
+    <repository>
+      <id>clojars</id>
+      <url>http://clojars.org/repo/</url>
+    </repository>
   </repositories>
   <properties>
     <maven.compiler.target>8</maven.compiler.target>
