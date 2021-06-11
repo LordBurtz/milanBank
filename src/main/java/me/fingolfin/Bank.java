@@ -126,6 +126,8 @@ public class Bank {
             System.out.printf(" the id for %s is %s", name, set.getString("id"));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throwables.getErrorCode();
+            throwables.getMessage( );
         }
     }
 }
