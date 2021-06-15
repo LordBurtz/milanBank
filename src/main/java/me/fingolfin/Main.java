@@ -1,6 +1,7 @@
 package me.fingolfin;
 
 import me.fingolfin.backend.Bank;
+import me.fingolfin.userinput.app.ConsoleInput;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
@@ -55,8 +56,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         //getConfig();
         Bank bank =Bank.getInstance();
-        bank.addCustomer("karger", "fridolin", "420" , "84405", "strasse 1");
-        bank.getIDbyName("fritzl"); //returns SQLException if invalid.. Result closed
-        //new ConsoleInput(bank);
+        //bank.addCustomer("karger", "fridolin", "420" , "84405", "strasse 1");
+        //bank.getIDbyName("fritzl"); //returns SQLException if invalid.. Result closed
+        new ConsoleInput(bank);
     }
 }
